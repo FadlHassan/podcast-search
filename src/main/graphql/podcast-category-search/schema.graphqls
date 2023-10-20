@@ -1,0 +1,40 @@
+type Query {
+    podcasts(filters: PodcastFilters, first: Int, sort: PodcastSort): PodcastList
+}
+
+input PodcastFilters {
+    rating: PodcastRating
+    categories: [String!]
+    language: String!
+}
+
+input PodcastSort {
+    sortBy: TOPIC
+    direction: DIRECTION
+}
+
+input PodcastRating {
+    minRating: Int
+    maxRating: Int
+}
+
+type PodcastList {
+    data: [Podcast!]!
+}
+
+type Podcast {
+    title: String!
+    description: String!
+}
+
+enum TOPIC {
+    ALPHABETICAL
+    RELEVANCE
+    TRENDING
+    FOLLOWER_COUNT
+}
+
+enum DIRECTION {
+    ASCENDING
+    DESCENDING
+}

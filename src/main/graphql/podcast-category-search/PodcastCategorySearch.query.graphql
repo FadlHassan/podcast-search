@@ -1,0 +1,8 @@
+query PodcastCategorySearchQuery($category: String!) {
+    podcasts(filters: {categories: [$category], language: "en"}, first: 20, sort: { sortBy: FOLLOWER_COUNT, direction: DESCENDING}) {
+        data {
+            title,
+            description
+        }
+    }
+}
